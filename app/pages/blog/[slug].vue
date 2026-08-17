@@ -129,6 +129,8 @@ useHead({
             <span class="mt-1 block text-sm text-ink">{{ neighbors.older.title }}</span>
           </NuxtLink>
         </nav>
+
+        <BlogComments />
       </article>
 
       <aside

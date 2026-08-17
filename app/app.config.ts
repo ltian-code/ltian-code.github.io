@@ -7,6 +7,15 @@ export default defineAppConfig({
     url: 'https://ltian-code.github.io',
     sourceUrl: 'https://github.com/ltian-code/ltian-code.github.io',
   },
+  social: {
+    github: 'https://github.com/ltian-code',
+  },
+  giscus: {
+    repo: 'ltian-code/ltian-code.github.io',
+    repoId: 'R_kgDOT6zwRQ',
+    category: 'Comments',
+    categoryId: '',
+  },
   nav: [
     { to: '/', label: '首页', exact: true },
     { to: '/blog', label: '博客', exact: false },

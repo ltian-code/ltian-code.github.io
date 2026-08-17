@@ -12,12 +12,22 @@ const selectedTag = computed(() => {
   return typeof tag === 'string' ? tag : ''
 })
 
+const query = ref('')
+
 const visiblePosts = computed(() => {
   const list = posts.value ?? []
-  if (!selectedTag.value) {
-    return list
-  }
-  return list.filter(post => post.tags?.includes(selectedTag.value))
+  const tag = selectedTag.value
+  const needle = query.value.trim().toLowerCase()
+  return list.filter((post) => {
+    if (tag && !post.tags?.includes(tag)) {
+      return false
+    }
+    if (!needle) {
+      return true
+    }
+    const haystack = [post.title, post.description, ...(post.tags ?? [])].join(' ').toLowerCase()
+    return haystack.includes(needle)
+  })
 })
 
 useSeoMeta({
@@ -38,6 +48,17 @@ useHead({
     title="博客"
     description="写一篇 Markdown 放到 content/blog/，就会出现在这里。草稿不会上岛。"
   >
+    <div class="mt-6">
+      <label class="sr-only" for="blog-search">搜索文章</label>
+      <input
+        id="blog-search"
+        v-model="query"
+        type="search"
+        placeholder="搜索标题、摘要、标签…"
+        class="h-11 w-full rounded-lg border border-line bg-card px-3 text-sm sm:max-w-md"
+      >
+    </div>
+
     <p
       v-if="selectedTag"
       class="mt-4 text-sm text-muted"
@@ -73,7 +94,7 @@ useHead({
       v-else
       class="mt-8 rounded-2xl border border-dashed border-line bg-card p-6 text-sm text-muted"
     >
-      {{ selectedTag ? '这个标签下还没有文章。' : '还没有已发布的文章。' }}
+      {{ selectedTag ? '这个标签下还没有文章。' : (query.trim() ? '没有匹配的文章。' : '还没有已发布的文章。') }}
     </p>
   </LayoutPageHero>
 </template>

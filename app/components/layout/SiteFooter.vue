@@ -18,6 +18,12 @@ const year = new Date().getFullYear()
         >
           源码
         </a>
+        <a
+          href="/rss.xml"
+          class="text-lagoon underline-offset-2 hover:underline"
+        >
+          RSS
+        </a>
         <span>内容与代码以仓库许可证为准</span>
       </p>
     </div>
