@@ -1,0 +1,47 @@
+// CodeIsle 设计 token。业务布局走 Tailwind，这里只放色板与无法用 utility 表达的皮肤。
+
+:root {
+  --isle-paper: #f6f1e8;
+  --isle-card: #fffaf3;
+  --isle-ink: #1c2a28;
+  --isle-muted: #5c6b68;
+  --isle-lagoon: #1f6f68;
+  --isle-lagoon-hover: #185851;
+  --isle-sand: #e8dcc8;
+  --isle-line: #d9cfc0;
+  --isle-header-bg: color-mix(in srgb, var(--isle-paper) 88%, transparent);
+}
+
+.dark {
+  --isle-paper: #121a1c;
+  --isle-card: #182224;
+  --isle-ink: #e6efe9;
+  --isle-muted: #9aada8;
+  --isle-lagoon: #5ec4b8;
+  --isle-lagoon-hover: #7ad4c9;
+  --isle-sand: #1e2c2e;
+  --isle-line: #2a3a3c;
+  --isle-header-bg: color-mix(in srgb, var(--isle-paper) 88%, transparent);
+}
+
+.site-header {
+  background: var(--isle-header-bg);
+  backdrop-filter: blur(12px);
+}
+
+.skip-link:focus {
+  position: fixed;
+  left: 1rem;
+  top: 1rem;
+  z-index: 60;
+  width: auto;
+  height: auto;
+  margin: 0;
+  padding: 0.5rem 0.75rem;
+  overflow: visible;
+  clip: auto;
+  clip-path: none;
+  border-radius: 0.5rem;
+  background: var(--isle-lagoon);
+  color: #fff;
+}
