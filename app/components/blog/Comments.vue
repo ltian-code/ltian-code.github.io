@@ -2,6 +2,7 @@
 const appConfig = useAppConfig()
 const colorMode = useColorMode()
 const host = ref<HTMLElement | null>(null)
+const status = ref<'idle' | 'loading' | 'error'>('idle')
 
 const enabled = computed(() =>
   Boolean(appConfig.giscus.repoId && appConfig.giscus.categoryId),
@@ -10,10 +11,11 @@ const enabled = computed(() =>
 const theme = computed(() => (colorMode.value === 'dark' ? 'dark' : 'light'))
 
 function mount() {
-  if (!host.value || !enabled.value) {
+  if (!import.meta.client || !host.value || !enabled.value || status.value !== 'idle') {
     return
   }
-  host.value.replaceChildren()
+
+  status.value = 'loading'
   const script = document.createElement('script')
   script.src = 'https://giscus.app/client.js'
   script.async = true
@@ -29,6 +31,9 @@ function mount() {
   script.setAttribute('data-input-position', 'bottom')
   script.setAttribute('data-theme', theme.value)
   script.setAttribute('data-lang', 'zh-CN')
+  script.onerror = () => {
+    status.value = 'error'
+  }
   host.value.appendChild(script)
 }
 
@@ -42,6 +47,12 @@ function syncTheme() {
 
 onMounted(() => {
   mount()
+})
+
+watch(host, (el) => {
+  if (el) {
+    mount()
+  }
 })
 
 watch(theme, () => {
@@ -60,11 +71,22 @@ watch(theme, () => {
     <p class="mt-1 text-sm text-muted">
       用 GitHub Discussions，不经过本站服务器。
     </p>
-    <ClientOnly>
-      <div
-        ref="host"
-        class="mt-4"
-      />
-    </ClientOnly>
+    <p
+      v-if="status === 'error'"
+      class="mt-4 text-sm text-muted"
+    >
+      评论组件加载失败。请确认能打开
+      <a
+        href="https://giscus.app"
+        class="text-lagoon underline-offset-2 hover:underline"
+        rel="noopener noreferrer"
+        target="_blank"
+      >giscus.app</a>
+      后再刷新。
+    </p>
+    <div
+      ref="host"
+      class="mt-4 min-h-24"
+    />
   </section>
 </template>

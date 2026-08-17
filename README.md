@@ -32,4 +32,4 @@ npm run generate
 - RSS：`/rss.xml`
 - Sitemap：`/sitemap.xml`
 
-文章评论用 Giscus（GitHub Discussions）。打开仓库 Discussions 后，到 [giscus.app](https://giscus.app) 取 `categoryId`，填进 `app/app.config.ts`。
+文章评论用 Giscus（GitHub Discussions），分类 `Announcements`。`categoryId` 已在 `app/app.config.ts`。

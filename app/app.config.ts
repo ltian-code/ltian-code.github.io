@@ -13,8 +13,8 @@ export default defineAppConfig({
   giscus: {
     repo: 'ltian-code/ltian-code.github.io',
     repoId: 'R_kgDOT6zwRQ',
-    category: 'Comments',
-    categoryId: '',
+    category: 'Announcements',
+    categoryId: 'DIC_kwDOT6zwRc4DDkR7',
   },
   nav: [
     { to: '/', label: '首页', exact: true },
