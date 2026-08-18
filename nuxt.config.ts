@@ -1,3 +1,6 @@
+import { rmSync } from 'node:fs'
+import { join } from 'node:path'
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
@@ -7,6 +10,8 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@nuxtjs/color-mode',
     '@nuxt/content',
+    '@nuxt/fonts',
+    'nuxt-og-image',
   ],
   css: [
     '~/assets/styles/variables.less',
@@ -14,6 +19,16 @@ export default defineNuxtConfig({
   ],
   typescript: {
     strict: true,
+  },
+  hooks: {
+    'nitro:init'(nitro) {
+      nitro.hooks.hook('close', () => {
+        const fontsOut = join(nitro.options.output.publicDir, 'fonts')
+        if (fontsOut.includes('.output')) {
+          rmSync(fontsOut, { recursive: true, force: true })
+        }
+      })
+    },
   },
   app: {
     baseURL: '/',
@@ -31,6 +46,54 @@ export default defineNuxtConfig({
     prerender: {
       crawlLinks: true,
       routes: ['/sitemap.xml', '/rss.xml'],
+      ignore: ['/blog?**'],
+    },
+  },
+  site: {
+    url: 'https://ltian-code.github.io',
+    name: 'CodeIsle',
+    description: '个人技术站点：Markdown 博客、纯前端开发工具、AI 航路图。',
+  },
+  fonts: {
+    providers: {
+      google: false,
+      googleicons: false,
+      bunny: false,
+      fontshare: false,
+      adobe: false,
+    },
+    families: [
+      {
+        name: 'Noto Sans SC',
+        src: [{ url: '/fonts/NotoSansSC-Regular.ttf', format: 'truetype' }],
+        weight: 400,
+        global: true,
+        preload: false,
+      },
+      {
+        name: 'Noto Sans SC',
+        src: [{ url: '/fonts/NotoSansSC-Bold.ttf', format: 'truetype' }],
+        weight: 700,
+        global: true,
+        preload: false,
+      },
+    ],
+  },
+  ogImage: {
+    zeroRuntime: true,
+    defaults: {
+      width: 1200,
+      height: 630,
+    },
+    compatibility: {
+      prerender: {
+        chromium: false,
+      },
+    },
+  },
+  runtimeConfig: {
+    public: {
+      buildTime: process.env.NUXT_PUBLIC_BUILD_TIME || '',
     },
   },
   colorMode: {

@@ -1,7 +1,9 @@
 ---
 title: 本岛搭建笔记：Nuxt 4 与 GitHub Pages
+titleEn: Building CodeIsle with Nuxt 4 and GitHub Pages
 description: CodeIsle 阶段 0–1 的取舍：锁 Nuxt 4、User Site、先不要打开 Pages，以及用 Markdown 写博客。
-date: 2026-08-17
+descriptionEn: Early decisions: keep Nuxt 4, use a User Site, and write the blog in Markdown.
+date: "2026-08-17"
 tags:
   - CodeIsle
   - Nuxt

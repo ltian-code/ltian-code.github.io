@@ -10,6 +10,12 @@ useHead({
   link: [{ rel: 'canonical', href: `${appConfig.site.url}/about` }],
 })
 
+useIsleOg({
+  title: '关于 CodeIsle',
+  description: appConfig.site.description,
+  kicker: '代码之屿',
+})
+
 const topics = [
   'Nuxt / Vue 与静态站点',
   '纯前端开发工具',
@@ -29,8 +35,8 @@ const topics = [
         <dd class="mt-1 text-ink">Nuxt 4 · Vue 3 · Tailwind · Less · Pinia · GitHub Pages</dd>
       </div>
       <div class="rounded-2xl border border-line bg-card p-5">
-        <dt class="text-muted">约束</dt>
-        <dd class="mt-1 text-ink">运行时无 Node 服务。工具纯前端，输入不上传。</dd>
+        <dt class="text-muted">隐私</dt>
+        <dd class="mt-1 text-ink">工具输入不出浏览器。统计仅在配置了 Umami websiteId 后才会加载第三方脚本。</dd>
       </div>
       <div class="rounded-2xl border border-line bg-card p-5">
         <dt class="text-muted">在写的主题</dt>

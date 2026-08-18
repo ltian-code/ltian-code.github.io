@@ -10,6 +10,12 @@ useSeoMeta({
   description: appConfig.site.description,
 })
 
+useIsleOg({
+  title: appConfig.site.name,
+  description: appConfig.site.tagline,
+  kicker: appConfig.site.nameZh,
+})
+
 const { data: posts } = await useAsyncData('home-posts', async () => {
   const all = await queryCollection('blog').order('date', 'DESC').all()
   return all.filter(post => !post.draft).slice(0, 3)
@@ -42,16 +48,25 @@ const channels = [
 <template>
   <div>
     <section class="border-b border-line bg-sand/30">
-      <div class="mx-auto max-w-isle px-4 py-14 md:px-6 md:py-20">
-        <p class="text-sm font-medium tracking-wide text-lagoon">
-          {{ appConfig.site.nameZh }}
-        </p>
-        <h1 class="mt-2 font-display text-4xl leading-tight text-ink md:text-5xl">
-          {{ appConfig.site.name }}
-        </h1>
-        <p class="mt-4 max-w-xl text-lg leading-relaxed text-muted">
-          {{ appConfig.site.tagline }}
-        </p>
+      <div class="mx-auto flex max-w-isle items-center justify-between gap-8 px-4 py-14 md:px-6 md:py-20">
+        <div>
+          <p class="text-sm font-medium tracking-wide text-lagoon">
+            {{ appConfig.site.nameZh }}
+          </p>
+          <h1 class="mt-2 font-display text-4xl leading-tight text-ink md:text-5xl">
+            {{ appConfig.site.name }}
+          </h1>
+          <p class="mt-4 max-w-xl text-lg leading-relaxed text-muted">
+            {{ appConfig.site.tagline }}
+          </p>
+          <p class="mt-3 max-w-xl text-sm leading-relaxed text-muted">
+            写前端、做纯浏览器工具，把常用 AI 航路记在同一座岛上。
+          </p>
+        </div>
+        <LayoutIsleMark
+          class="hidden md:block"
+          :size="120"
+        />
       </div>
     </section>
 

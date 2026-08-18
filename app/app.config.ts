@@ -7,6 +7,10 @@ export default defineAppConfig({
     url: 'https://ltian-code.github.io',
     sourceUrl: 'https://github.com/ltian-code/ltian-code.github.io',
   },
+  analytics: {
+    umamiWebsiteId: '',
+    umamiScriptUrl: 'https://cloud.umami.is/script.js',
+  },
   social: {
     github: 'https://github.com/ltian-code',
   },

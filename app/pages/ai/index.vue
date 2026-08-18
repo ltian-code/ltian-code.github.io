@@ -38,6 +38,12 @@ useSeoMeta({
 useHead({
   link: [{ rel: 'canonical', href: `${appConfig.site.url}/ai` }],
 })
+
+useIsleOg({
+  title: 'AI 导航',
+  description: '分类好的官方航路图，不是再造聊天窗口。',
+  kicker: 'CodeIsle',
+})
 </script>
 
 <template>

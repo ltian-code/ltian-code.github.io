@@ -40,6 +40,12 @@ useSeoMeta({
 useHead({
   link: [{ rel: 'canonical', href: `${appConfig.site.url}/blog` }],
 })
+
+useIsleOg({
+  title: '博客',
+  description: 'Markdown 笔记与搭建记录。',
+  kicker: 'CodeIsle',
+})
 </script>
 
 <template>

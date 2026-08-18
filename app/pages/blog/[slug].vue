@@ -57,6 +57,12 @@ useSeoMeta({
 useHead({
   link: () => [{ rel: 'canonical', href: canonical.value }],
 })
+
+useIsleOg({
+  title: post.value.title,
+  description: post.value.description,
+  kicker: '博客',
+})
 </script>
 
 <template>
@@ -79,6 +85,13 @@ useHead({
         <h1 class="mt-3 font-display text-3xl leading-tight text-ink md:text-4xl">
           {{ post.title }}
         </h1>
+        <p
+          v-if="post.titleEn"
+          class="mt-2 text-sm text-muted"
+          lang="en"
+        >
+          {{ post.titleEn }}
+        </p>
         <p
           v-if="post.description"
           class="mt-3 max-w-2xl text-base text-muted"

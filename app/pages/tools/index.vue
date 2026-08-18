@@ -21,6 +21,12 @@ useSeoMeta({
 useHead({
   link: [{ rel: 'canonical', href: `${appConfig.site.url}/tools` }],
 })
+
+useIsleOg({
+  title: '工具箱',
+  description: '纯前端开发小工具，输入不出浏览器。',
+  kicker: 'CodeIsle',
+})
 </script>
 
 <template>

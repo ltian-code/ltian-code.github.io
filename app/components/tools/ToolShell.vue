@@ -20,6 +20,12 @@ useSeoMeta({
 useHead({
   link: [{ rel: 'canonical', href: `${appConfig.site.url}${tool.value.to}` }],
 })
+
+useIsleOg({
+  title: tool.value.title,
+  description: tool.value.description,
+  kicker: '工具箱',
+})
 </script>
 
 <template>

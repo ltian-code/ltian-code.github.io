@@ -1,7 +1,10 @@
 /** frontmatter `date` 为 YYYY-MM-DD 字符串。 */
-export function formatPostDate(date: string | Date): string {
+export function formatPostDate(date: string | Date | null | undefined): string {
+  if (date == null || date === '') {
+    return ''
+  }
   const value = typeof date === 'string' ? new Date(`${date}T00:00:00`) : date
-  if (Number.isNaN(value.getTime())) {
+  if (!(value instanceof Date) || Number.isNaN(value.getTime())) {
     return String(date)
   }
   return value.toLocaleDateString('zh-CN', {

@@ -25,6 +25,8 @@ jobs:
           node-version: '22'
           cache: npm
       - run: npm ci
+      - name: Stamp build time
+        run: echo "NUXT_PUBLIC_BUILD_TIME=$(date -u +%Y-%m-%dT%H:%MZ)" >> "$GITHUB_ENV"
       - run: npm run generate
       - uses: actions/upload-pages-artifact@v3
         with:

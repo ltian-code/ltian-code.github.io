@@ -26,12 +26,7 @@ function toggleMenu() {
         to="/"
         class="flex min-h-11 items-center gap-2 rounded-md text-ink no-underline"
       >
-        <span
-          class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-lagoon text-sm font-semibold text-white"
-          aria-hidden="true"
-        >
-          屿
-        </span>
+        <LayoutIsleMark :size="32" />
         <span class="flex flex-col leading-tight">
           <span class="font-display text-base tracking-wide">{{ appConfig.site.name }}</span>
           <span class="text-[11px] text-muted">{{ appConfig.site.nameZh }}</span>

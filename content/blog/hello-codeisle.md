@@ -1,7 +1,9 @@
 ---
 title: 欢迎来到代码之屿
+titleEn: Welcome to CodeIsle
 description: CodeIsle 是个人技术站点：写文章、用工具、记 AI 航路。数据留在浏览器里。
-date: 2026-08-16
+descriptionEn: A personal site for notes, browser-only tools, and an AI link map.
+date: "2026-08-16"
 tags:
   - CodeIsle
   - 介绍

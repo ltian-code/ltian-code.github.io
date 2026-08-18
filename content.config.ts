@@ -11,6 +11,8 @@ export default defineContentConfig({
       schema: z.object({
         date: z.string(),
         description: z.string(),
+        titleEn: z.string().optional(),
+        descriptionEn: z.string().optional(),
         tags: z.array(z.string()).optional(),
         draft: z.boolean().default(false),
       }),

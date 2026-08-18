@@ -4,9 +4,9 @@
 
 - 仓库：[ltian-code/ltian-code.github.io](https://github.com/ltian-code/ltian-code.github.io)
 - 站点：[https://ltian-code.github.io/](https://ltian-code.github.io/)（推送后需把 Pages Source 设为 GitHub Actions）
-- 栈：Nuxt 4 · Vue 3 · Tailwind CSS · Less · Pinia
+- 栈：Nuxt 4 · Vue 3 · Tailwind CSS 3 · Less · Pinia
 
-当前是阶段 4：静态生成 + Actions 发布。博客、十个工具、AI 导航都可在本地打开。
+博客、十个工具、AI 导航、构建时 OG 图都可以在本地打开。访问统计与自定义域名只留了配置钩子，填入 ID / 域名后才会生效。
 
 ## 本地开发
 
@@ -33,3 +33,8 @@ npm run generate
 - Sitemap：`/sitemap.xml`
 
 文章评论用 Giscus（GitHub Discussions），分类 `Announcements`。`categoryId` 已在 `app/app.config.ts`。
+
+## 可选配置
+
+- **Umami**：在 `app/app.config.ts` 填 `analytics.umamiWebsiteId` 后才会加载统计脚本。
+- **自定义域名**：在 GitHub Pages 绑定后再改 `site.url`，不要提交空的 `CNAME`。
